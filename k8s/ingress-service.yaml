@@ -1,0 +1,27 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-srv
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+spec:
+  rules:
+    - host: local.abc.dev
+      http:
+        paths:
+          - path: /auth
+            pathType: Prefix
+            backend:
+              service: 
+                name: abc-authentication-service-clusterip
+                port: 
+                  number: 4500
+          - path: /product
+            pathType: Prefix
+            backend:
+              service: 
+                name: abc-product-service-clusterip
+                port: 
+                  number: 4501

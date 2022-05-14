@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: abc-authentication-depl
+spec:
+  selector:
+    matchLabels:
+      app: abc-authentication
+  template:
+    metadata:
+      labels:
+        app: abc-authentication
+    spec:
+      containers:
+        - name: abc-authentication
+          image: shalithax/abc_authentication_service
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 4500
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: abc-authentication-service-clusterip
+spec:
+  selector:
+    app: abc-authentication
+  ports:
+    - name: abc-authentication
+      protocol: TCP
+      port: 4500
+      targetPort: 4500
