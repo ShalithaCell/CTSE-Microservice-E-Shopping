@@ -1,0 +1,8 @@
+# Build
+docker build . -t ctse/shalithax/abc-e-com-fe
+
+# RUN
+docker run -p 3000:3000 ctse/shalithax/abc-e-com-fe
+
+# push
+docker push ctse/shalithax/abc-e-com-fe
