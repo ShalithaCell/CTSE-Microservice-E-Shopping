@@ -6,7 +6,7 @@ on:
 
 defaults:
   run:
-    working-directory: ./api-authentication
+    working-directory: ./backend/api-authentication
 
 jobs:
 
@@ -27,6 +27,6 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
-          file: ./api-authentication/Dockerfile
+          file: ./backend/api-authentication/Dockerfile
           push: true
           tags: ${{ secrets.SHALITHA_DOCKER_USERNAME }}/abc-authentication:${{ github.sha }}
