@@ -27,6 +27,6 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
-          file: ./Dockerfile
+          file: ./api-authentication/Dockerfile
           push: true
           tags: ${{ secrets.SHALITHA_DOCKER_USERNAME }}/abc-authentication:${{ github.sha }}
