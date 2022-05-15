@@ -1,5 +1,5 @@
 FROM node:18-alpine3.14
-WORKDIR /abc_auth
+WORKDIR /app
 COPY package*.json ./
 RUN npm install
 COPY . .
