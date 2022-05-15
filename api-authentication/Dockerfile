@@ -1,6 +1,6 @@
 FROM node:18-alpine3.14
-WORKDIR /app/api-authentication
-COPY package*.json ./
+WORKDIR /app
+COPY package*.json ./api-authentication
 RUN npm install
 COPY . .
 EXPOSE 4500
