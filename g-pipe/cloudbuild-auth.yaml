@@ -47,11 +47,33 @@ steps:
       ]
   # deploy changes to kubernetes config files
   - name: "gcr.io/cloud-builders/kubectl"
-    id: "Deploy"
-    args: ["apply", "-f", "k8s/"]
+    id: "Deploy auth app"
+    args: ["apply", "-f", "k8s/authapp-deploy.yaml"]
     env:
       - 'CLOUDSDK_COMPUTE_ZONE=us-central1-a'
       - 'CLOUDSDK_CONTAINER_CLUSTER=gke-ctse-cluster'
+      -
+  - name: "gcr.io/cloud-builders/kubectl"
+      id: "Deploy auth service"
+      args: [ "apply", "-f", "k8s/authapp-service.yaml" ]
+      env:
+        - 'CLOUDSDK_COMPUTE_ZONE=us-central1-a'
+        - 'CLOUDSDK_CONTAINER_CLUSTER=gke-ctse-cluster'
+
+  - name: "gcr.io/cloud-builders/kubectl"
+      id: "Deploy ingress"
+      args: [ "apply", "-f", "k8s/ingress.yaml" ]
+      env:
+        - 'CLOUDSDK_COMPUTE_ZONE=us-central1-a'
+        - 'CLOUDSDK_CONTAINER_CLUSTER=gke-ctse-cluster'
+
+  - name: "gcr.io/cloud-builders/kubectl"
+      id: "Deploy podscaler"
+      args: [ "apply", "-f", "k8s/podscaler-auth.yaml" ]
+      env:
+        - 'CLOUDSDK_COMPUTE_ZONE=us-central1-a'
+        - 'CLOUDSDK_CONTAINER_CLUSTER=gke-ctse-cluster'
+
   # add latest tag to new image
   - name: "gcr.io/cloud-builders/gcloud"
     id: "Tag"
