@@ -30,3 +30,10 @@
 
 [GKE Deploy](https://levelup.gitconnected.com/dockerizing-deploying-and-scaling-node-js-on-google-kubernetes-engine-with-continuous-integration-f895a98bf6e3)
 
+2. Build image
+
+```gcloud builds submit --tag gcr.io/<project-id>/gke-tutorial-image .```
+
+* for auth
+
+   ```gcloud builds submit --tag gcr.io/phrasal-waters-350317/gke-abc-auth .```
