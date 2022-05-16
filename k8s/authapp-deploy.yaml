@@ -1,21 +1,21 @@
-apiVersion: apps/v1
+apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: abc-auth-app-dpl-clusterip
+  name: gke-abc-auth-deployment
   namespace: default
+  labels:
+    app: gke-abc-auth-deployment
 spec:
-  replicas: 2
-  selector:
-    matchLabels:
-      app: abc-auth-app-dpl
+  replicas: 1 # number of pods
   template:
     metadata:
       labels:
-        app: abc-auth-app-dpl
+        app: gke-abc-auth-deployment
     spec:
       containers:
-        - name: abc-auth-app-dpl
-          image: shalithax/abc-auth-app
-          imagePullPolicy: IfNotPresent
+        - name: gke-abc-auth-image
+          image: gcr.io/phrasal-waters-350317/gke-abc-auth-image
+          imagePullPolicy: Always
           ports:
-            - containerPort: 4500
+            - containerPort: 3000
+              protocol: TCP

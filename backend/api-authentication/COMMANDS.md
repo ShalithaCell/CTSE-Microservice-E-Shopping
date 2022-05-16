@@ -21,3 +21,12 @@
 3. for login token
 
 ```kubectl -n kube-system describe secret default```
+
+## GKE
+
+1. create container
+
+```gcloud container clusters create abc-auth-cluster --disk-size 10 --num-nodes 1 --enable-autoscaling --min-nodes 1 --max-nodes 5 --zone europe-north1-a```
+
+[GKE Deploy](https://levelup.gitconnected.com/dockerizing-deploying-and-scaling-node-js-on-google-kubernetes-engine-with-continuous-integration-f895a98bf6e3)
+
