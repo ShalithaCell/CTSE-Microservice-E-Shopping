@@ -1,6 +1,6 @@
 steps:
   # decrypt .env
-  - name: gcr.io/cloud-builders/gcloud
+  - name: gcr.io/cloud-builders/gcloud_keys
     id: "Decrypt environment variables"
     args:
       - kms
