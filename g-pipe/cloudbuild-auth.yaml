@@ -28,7 +28,7 @@ steps:
           "gcr.io/$PROJECT_ID/$_IMAGE:$SHORT_SHA",
           "--cache-from",
           "gcr.io/$PROJECT_ID/$_IMAGE:latest",
-          ".",
+          "./backend/api-authentication/",
       ]
   # push image to container registry
   - name: "gcr.io/cloud-builders/docker"
