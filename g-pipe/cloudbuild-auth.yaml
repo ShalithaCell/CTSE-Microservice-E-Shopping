@@ -1,15 +1,4 @@
 steps:
-  # decrypt .env
-  - name: gcr.io/cloud-builders/gcloud_keys
-    id: "Decrypt environment variables"
-    args:
-      - kms
-      - decrypt
-      - --ciphertext-file=.env.enc
-      - --plaintext-file=.env
-      - --location=global
-      - --keyring=$_KEYRING
-      - --key=$_KEY
   # pull previous image to speed up docker build
   - name: "gcr.io/cloud-builders/docker"
     id: "Pull"
