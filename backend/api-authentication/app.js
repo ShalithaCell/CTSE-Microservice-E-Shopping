@@ -31,7 +31,7 @@ app.use('/readiness', function (req, res, next) {
 app.use('/healthcheck', healthyIntercept, healthCheck());
 
 app.get("/", (req, res) => {
-    res.send("Welcome to Auth server")
+    res.send("Welcome to Auth server version 1")
 })
 
 
