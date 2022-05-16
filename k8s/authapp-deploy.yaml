@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: ctse-api-auth
-          image: gcr.io/ctseabcapp/ctse-api-auth
+          image: IMAGE
           readinessProbe:
             httpGet: # make an HTTP request
               port: 4500 # port to use
