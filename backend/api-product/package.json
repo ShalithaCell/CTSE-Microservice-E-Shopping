@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "start": "tsc && node dist",
+    "start": "ts-node src/index.ts",
     "test": "jest"
   },
   "author": "",
