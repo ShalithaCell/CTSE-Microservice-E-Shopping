@@ -9,6 +9,7 @@ import CreditCardOutline from 'mdi-material-ui/CreditCardOutline'
 import AccountPlusOutline from 'mdi-material-ui/AccountPlusOutline'
 import AlertCircleOutline from 'mdi-material-ui/AlertCircleOutline'
 import GoogleCirclesExtended from 'mdi-material-ui/GoogleCirclesExtended'
+import SalesByCountries from 'src/views/dashboard/SalesByCountries'
 
 const navigation = () => {
   return [
@@ -35,6 +36,12 @@ const navigation = () => {
       title: 'Register',
       icon: AccountPlusOutline,
       path: '/pages/register',
+      openInNewTab: true
+    },
+    {
+      title: 'Sales',
+      icon: SalesByCountries,
+      path: '/pages/sales',
       openInNewTab: true
     },
     {
