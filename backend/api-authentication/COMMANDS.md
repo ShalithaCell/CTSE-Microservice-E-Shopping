@@ -37,3 +37,7 @@
 * for auth
 
    ```gcloud builds submit --tag gcr.io/phrasal-waters-350317/gke-abc-auth .```
+
+3. ENV 
+
+```gcloud kms encrypt --location global --keyring ctse-app-keyring --key default --plaintext-file .env --ciphertext-file .env.enc```

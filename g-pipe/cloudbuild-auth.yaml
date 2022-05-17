@@ -1,4 +1,15 @@
 steps:
+  # decrypt .env
+  - name: gcr.io/cloud-builders/gcloud
+    id: "Decrypt environment variables"
+    args:
+      - kms
+      - decrypt
+      - --ciphertext-file=backend/api-authentication/.env.enc
+      - --plaintext-file=backend/api-authentication/.env
+      - --location=global
+      - --keyring=$_KEYRING
+      - --key=$_KEY
   # pull previous image to speed up docker build
   - name: "gcr.io/cloud-builders/docker"
     id: "Pull"
