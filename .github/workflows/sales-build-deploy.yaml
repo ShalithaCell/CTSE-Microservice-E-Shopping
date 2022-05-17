@@ -2,7 +2,7 @@ name: Docker Build Deploy Sales Management
 
 on:
   push:
-    branches: [ feature/order_management ]
+    branches: [ main ]
 
 defaults:
   run:
