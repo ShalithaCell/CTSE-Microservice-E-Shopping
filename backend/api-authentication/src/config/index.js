@@ -5,7 +5,7 @@ dotenv.config();
 module.exports = {
     connectionString : process.env.MONGO_CONNECTION,
     version          : {
-        v1 : '/api/v1/ms-authentication',
+        v1 : '/api/v1',
     },
     jwtSecret              : process.env.JWT_SECRET,
     tokenExpireTime        : process.env.JWT_TOKEN_EXPIRE || 86400,
