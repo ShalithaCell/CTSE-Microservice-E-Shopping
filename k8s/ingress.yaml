@@ -3,14 +3,13 @@ kind: Ingress
 metadata:
   name: ctse-api-ingress
   annotations:
-    kubernetes.io/ingress.class: nginx
     kubernetes.io/ingress.global-static-ip-name: "gke-ctseapp-ip"
 spec:
   rules:
     - http:
         paths:
-          - path: /api
-            pathType: Prefix
+          - path: /
+            pathType: ImplementationSpecific
             backend:
               service:
                 name: ctse-auth-service
