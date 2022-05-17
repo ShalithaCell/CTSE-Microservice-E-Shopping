@@ -29,3 +29,10 @@ spec:
                 name: ctse-product-service
                 port:
                   number: 4001
+          - path: /sales/*
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: ctse-sales-service
+                port:
+                  number: 7001
