@@ -4,4 +4,4 @@ COPY package*.json ./
 RUN npm install
 COPY . .
 EXPOSE 4500
-CMD ["node","src/app.js"]
+CMD ["node","app.js"]
