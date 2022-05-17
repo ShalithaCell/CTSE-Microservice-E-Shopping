@@ -1,0 +1,38 @@
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: ctse-product-service
+spec:
+  selector:
+    app: product-api
+  ports:
+    - protocol: 'TCP'
+      # Port accessible inside cluster
+      port: 5002
+      # Port to forward to inside the pod
+      targetPort: 5001
+      # Port accessible outside cluster
+      nodePort: 30003
+  type: LoadBalancer
+
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: ctse-product-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: product-api
+  template:
+    metadata:
+      labels:
+        app: product-api
+    spec:
+      containers:
+        - name: product-api
+          image: it18257182/ctse-api-product
+          ports:
+            - containerPort: 5001

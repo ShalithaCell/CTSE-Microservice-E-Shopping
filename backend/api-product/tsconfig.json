@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "lib": ["es7", "dom"],
+    "module": "commonjs",
+    "noImplicitReturns": true,
+    "outDir": "dist",
+    "sourceMap": true,
+    "target": "es6",
+    "experimentalDecorators": true,
+    "allowJs": true
+  },
+  "compileOnSave": true,
+  "include": ["src"]
+}
