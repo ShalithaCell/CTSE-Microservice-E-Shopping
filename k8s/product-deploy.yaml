@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ctse-product-deployment
+  namespace: default
+  labels:
+    app: ctse-product-deployment
+spec:
+  replicas: 1 # number of pods
+  selector:
+    matchLabels:
+      app: ctse-product-deployment
+  template:
+    metadata:
+      labels:
+        app: ctse-product-deployment
+    spec:
+      containers:
+        - name: ctse-api-product
+          image: IMAGE
+          readinessProbe:
+            httpGet: # make an HTTP request
+              port: 4000 # port to use
+              path: /readiness # endpoint to hit
+              scheme: HTTP # or HTTPS
+            initialDelaySeconds: 3 # how long to wait before checking
+            periodSeconds: 3 # how long to wait between checks
+            successThreshold: 1 # how many successes to hit before accepting
+            failureThreshold: 1 # how many failures to accept before failing
+            timeoutSeconds: 1 # how long to wait for a response
+          livenessProbe:
+            httpGet: # make an HTTP request
+              port: 4000 # port to use
+              path: /healthcheck # endpoint to hit
+              scheme: HTTP # or HTTPS
+            initialDelaySeconds: 3 # how long to wait before checking
+            periodSeconds: 3 # how long to wait between checks
+            successThreshold: 1 # how many successes to hit before accepting
+            failureThreshold: 1 # how many failures to accept before failing
+            timeoutSeconds: 1 # how long to wait for a response
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 4000
+              protocol: TCP

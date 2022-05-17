@@ -1,0 +1,30 @@
+name: Docker Build Deploy Product
+
+on:
+  push:
+    branches: [main]
+
+defaults:
+  run:
+    working-directory: ./backend/api-product
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: run shell script
+        run: echo commit hash is ${{ github.sha }}
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.HASHINTHI_DOCKER_USERNAME }}
+          password: ${{ secrets.HASHINTHI_DOCKER_TOKEN }}
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v2
+        with:
+          context: ./backend/api-product
+          file: ./backend/api-product/Dockerfile
+          push: true
+          tags: ${{ secrets.HASHINTHI_DOCKER_USERNAME }}/abc-product:${{ github.sha }}

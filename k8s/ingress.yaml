@@ -1,0 +1,31 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ctse-api-ingress
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: "gke-ctseapp-ip"
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /auth-api/v1/*
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: ctse-auth-service
+                port:
+                  number: 4501
+          - path: /payment-api/v1/*
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: ctse-payment-gateway-service
+                port:
+                  number: 5101
+          - path: /product/*
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: ctse-product-service
+                port:
+                  number: 4001
