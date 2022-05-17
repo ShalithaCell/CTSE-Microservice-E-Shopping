@@ -15,3 +15,10 @@ spec:
                 name: ctse-auth-service
                 port:
                   number: 4501
+          - path: /payment-api/v1/*
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: ctse-payment-gateway-service
+                port:
+                  number: 5101
