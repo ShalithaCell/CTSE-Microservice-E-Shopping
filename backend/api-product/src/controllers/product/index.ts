@@ -14,11 +14,19 @@ export class ProductController implements Controller {
     this.productService = productService;
   }
 
+  public defaultData = async (request: Request, response: Response, next: NextFunction) => {
+    return response.status(200).json({ success: true });
+  }
+
+  public readiness = async (request: Request, response: Response, next: NextFunction) => {
+    return response.status(200).json({ ready : true });
+  }
+
   /**
    * fetch instance from product db using the productId
-   * @param request 
-   * @param response 
-   * @param nextFunction 
+   * @param request
+   * @param response
+   * @param nextFunction
    * @returns {Object}
    */
   public getProductById = async (request: Request, response: Response, next: NextFunction) => {
@@ -42,9 +50,9 @@ export class ProductController implements Controller {
 
   /**
    * delete instance from product db using the productId
-   * @param request 
-   * @param response 
-   * @param nextFunction 
+   * @param request
+   * @param response
+   * @param nextFunction
    * @returns {Object}
    */
   public deleteProductById = async (request: Request, response: Response, next: NextFunction) => {
@@ -67,10 +75,10 @@ export class ProductController implements Controller {
   }
 
   /**
-  * fetch all instances from product db 
-  * @param request 
-  * @param response 
-  * @param nextFunction 
+  * fetch all instances from product db
+  * @param request
+  * @param response
+  * @param nextFunction
   * @returns {Object}
   */
   public getAllProducts = async (request: Request, response: Response, next: NextFunction) => {
@@ -88,9 +96,9 @@ export class ProductController implements Controller {
 
   /**
    * create or update the existing instance of product in the product DB
-   * @param request 
-   * @param response 
-   * @param next 
+   * @param request
+   * @param response
+   * @param next
    * @returns {Object}
    */
   public createOrUpdateProduct = async (request: Request, response: Response, next: NextFunction) => {
