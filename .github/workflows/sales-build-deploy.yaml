@@ -4,6 +4,10 @@ on:
   push:
     branches: [ feature/order_management ]
 
+defaults:
+  run:
+    working-directory: ./backend/api-sales
+
 jobs:
 
   build:
