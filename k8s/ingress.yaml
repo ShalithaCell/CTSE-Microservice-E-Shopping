@@ -22,3 +22,10 @@ spec:
                 name: ctse-payment-gateway-service
                 port:
                   number: 5101
+          - path: /product/*
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: ctse-product-service
+                port:
+                  number: 4001
