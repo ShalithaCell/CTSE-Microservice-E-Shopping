@@ -3,6 +3,8 @@ kind: Ingress
 metadata:
   name: ctse-api-ingress
   annotations:
+    kubernetes.io/ingress.class: nginx
+    ginx.ingress.kubernetes.io/rewrite-target: /
     kubernetes.io/ingress.global-static-ip-name: "gke-ctseapp-ip"
 spec:
   rules:
