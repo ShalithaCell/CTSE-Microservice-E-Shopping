@@ -24,7 +24,7 @@ app.use('/unhealthy', function(req, res, next){
 });
 
 app.use('/readiness', function (req, res, next) {
-    res.status(200).json({ ready });
+    res.status(200).json({ ready: true });
 });
 
 // returns the liveness response
