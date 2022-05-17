@@ -7,7 +7,6 @@ const router = new Router({
     prefix : '/',
 });
 
-
 router.get('/', async (ctx, next) =>
 {
     const response = new Response();
@@ -15,7 +14,7 @@ router.get('/', async (ctx, next) =>
     ctx.response.status = StatusCodes.OK;
     response.success = true;
     response.message = "Application Invoked !";
-    response.data = {}
+    response.data = {};
 
     ctx.body = response;
     next().then();
@@ -28,7 +27,7 @@ router.get('/readiness', async (ctx, next) =>
     ctx.response.status = StatusCodes.OK;
     response.success = true;
     response.message = "Application Invoked !";
-    response.data = {}
+    response.data = {};
 
     ctx.body = response;
     next().then();
