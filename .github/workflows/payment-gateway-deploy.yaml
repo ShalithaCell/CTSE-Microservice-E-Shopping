@@ -2,7 +2,7 @@ name: Docker Build Deploy Paymenmt Gateway
 
 on:
   push:
-    branches: [ feature/payment_gateway ]
+    branches: [ main ]
 
 defaults:
   run:
