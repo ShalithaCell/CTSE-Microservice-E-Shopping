@@ -4,7 +4,7 @@ const { Response } = require('../../types');
 
 // Prefix all routes with: /auth
 const router = new Router({
-    prefix : '/auth-api',
+    prefix : '/auth-api/v1',
 });
 
 router.get('/', async (ctx, next) =>
