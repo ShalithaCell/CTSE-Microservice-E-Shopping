@@ -1,0 +1,17 @@
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: ctse-payment-gateway-hpa
+  namespace: default
+spec:
+  scaleTargetRef:
+    kind: Deployment
+    name: ctse-payment-gateway-deployment
+    apiVersion: apps/v1beta1
+  minReplicas: 1
+  maxReplicas: 5
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        targetAverageUtilization: 80
