@@ -1,0 +1,22 @@
+[
+  {
+    "name": "admin",
+    "priority": 1,
+    "isActive": true
+  },
+  {
+    "name": "editor",
+    "priority": 2,
+    "isActive": true
+  },
+  {
+    "name": "reviewer",
+    "priority": 3,
+    "isActive": true
+  },
+  {
+    "name": "user",
+    "priority": 4,
+    "isActive": true
+  }
+]
