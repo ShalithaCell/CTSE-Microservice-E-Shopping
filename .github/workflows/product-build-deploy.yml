@@ -2,7 +2,7 @@ name: Docker Build Deploy Product
 
 on:
   push:
-    branches: [implement-product-api]
+    branches: [main]
 
 defaults:
   run:
