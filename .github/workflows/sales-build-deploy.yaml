@@ -22,7 +22,7 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v2
         with:
-          context: .
-          file: ./api-sales/Dockerfile
+          context: ./backend/api-sales
+          file: ./backend/api-sales/Dockerfile
           push: true
           tags: ${{ secrets.SASINDU_DOCKER_USERNAME }}/abc-salesmanagement:${{ github.sha }}
