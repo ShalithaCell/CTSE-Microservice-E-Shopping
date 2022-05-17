@@ -17,17 +17,3 @@ spec:
                 name: ctse-auth-service
                 port:
                   number: 4501
-          - path: /api/
-            pathType: ImplementationSpecific
-            backend:
-              service:
-                name: ctse-auth-service
-                port:
-                  number: 4501
-          - path: /api/v1/ms-authentication/*
-            pathType: ImplementationSpecific
-            backend:
-              service:
-                name: ctse-auth-service
-                port:
-                  number: 4501
