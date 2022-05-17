@@ -1,0 +1,32 @@
+name: Docker Build Deploy Paymenmt Gateway
+
+on:
+  push:
+    branches: [ feature/payment_gateway ]
+
+defaults:
+  run:
+    working-directory: ./backend/payment-gateway
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name : run shell script
+        run: echo commit hash is ${{ github.sha }}
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.SHALITHA_DOCKER_USERNAME }}
+          password: ${{ secrets.SHALITHA_DOCKER_TOKEN }}
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v2
+        with:
+          context: ./backend/payment-gateway
+          file: ./backend/payment-gateway/Dockerfile
+          push: true
+          tags: ${{ secrets.SHALITHA_DOCKER_USERNAME }}/abc-payment-gateway:${{ github.sha }}
