@@ -8,6 +8,7 @@ const errorHandler = async (ctx, next) =>
     catch (err)
     {
         console.log('errorHandler');
+        console.log(err);
         ctx.status = err.status || 500;
         ctx.body = err.expose ? err.message : 'An error occurred!';
     }
@@ -27,6 +28,7 @@ const jsonErrorHandler = async (ctx, next) =>
         if (isJson)
         {
             console.log('jsonErrorHandler isJson');
+            console.log(err);
             ctx.status = err.status || 500;
             ctx.body = {
                 error : `An error just occurred`,

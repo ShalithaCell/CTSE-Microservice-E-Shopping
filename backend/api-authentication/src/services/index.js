@@ -17,4 +17,5 @@ module.exports = {
     RoleService,
     TokenService,
     mailService,
+    emailNotificationService,
 };

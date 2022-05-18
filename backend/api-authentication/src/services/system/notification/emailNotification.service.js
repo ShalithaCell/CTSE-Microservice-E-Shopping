@@ -10,20 +10,27 @@ const mailService = require('../mailer/nodeMailer.service');
 const emailNotificationService = {
     sendUserConfirmationEmail : async (userName, senderEmail, suffixData) =>
     {
-        fs.readFile(path.resolve('public/email-confirm.html'), 'utf8', (err, data) =>
+        try
         {
-            if (err)
+            fs.readFile(path.resolve('public/email-confirm.html'), 'utf8', (err, data) =>
             {
-                // TODO: send telegram notification
-                throw err;
-            }
+                if (err)
+                {
+                    // TODO: send telegram notification
+                    throw err;
+                }
 
-            const htmlBody = data.replace("{IMG}", siteLogo)
-                .replace("{NAME}", userName)
-                .replace("{LINK}", `${accountConfirmationURL}?email=${encodeURIComponent(suffixData.email)}&token=${encodeURIComponent(suffixData.token)}`);
+                const htmlBody = data.replace("{IMG}", siteLogo)
+                    .replace("{NAME}", userName)
+                    .replace("{LINK}", `${accountConfirmationURL}?email=${encodeURIComponent(suffixData.email)}&token=${encodeURIComponent(suffixData.token)}`);
 
-            mailService.send(senderEmail, 'Confirm Your ICAF Account', htmlBody).then();
-        });
+                mailService.send(senderEmail, 'Confirm Your ABC Account', htmlBody).then();
+            });
+        }
+        catch (ex)
+        {
+            console.log("email not send", ex);
+        }
     },
     sendPasswordResetEmail : async (email, password) =>
     {
@@ -42,7 +49,7 @@ const emailNotificationService = {
                 .replace('{company}', siteName)
                 .replace("{password}", password);
 
-            mailService.send(email, 'Reset Your ICAF Account', htmlBody).then();
+            mailService.send(email, 'Reset Your ABC Account', htmlBody).then();
         });
     },
 };
