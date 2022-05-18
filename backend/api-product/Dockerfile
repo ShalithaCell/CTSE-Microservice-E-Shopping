@@ -1,13 +1,13 @@
 FROM node:12.13.0
 
-WORKDIR '/app'
+WORKDIR /app
 
-COPY package.json .
+COPY package*.json ./
 
-RUN yarn install
+RUN npm install
 
 COPY . .
 
 EXPOSE 4000
 
-CMD ["npm","start"]
+CMD ["node","server.js"]
