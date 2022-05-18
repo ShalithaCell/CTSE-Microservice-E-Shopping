@@ -4,7 +4,7 @@ const router = express.Router();
 const productController = require('../../controllers/product/productController');
 
 module.exports = function () {
-    router.get('/:id', (req, res) => {
+    router.get('/data/:id', (req, res) => {
         productController.getProductById(req.params.id).then(response => {
             res.status(200).send(response);
         }).catch(err => {
@@ -12,7 +12,7 @@ module.exports = function () {
         })
     });
 
-    router.put('/', (req,res) => {
+    router.put('/data', (req,res) => {
         productController.updateProduct(req.params.id, req.body).then(resData => {
             res.status(200).send(resData)
         }).catch(err => {
@@ -20,7 +20,7 @@ module.exports = function () {
         })
     });
 
-    router.post('/',  (req,res) => {
+    router.post('/data',  (req,res) => {
         productController.createProduct(req.body).then(resData => {
             res.status(200).send(resData)
         }).catch(err => {
@@ -28,7 +28,7 @@ module.exports = function () {
         })
     });
 
-    router.get('/all',  (req,res)  => {
+    router.get('/data/all',  (req,res)  => {
         productController.getAllProducts().then( resData => {
             res.status(200).send(resData)
         }).catch(function (err) {
@@ -36,7 +36,7 @@ module.exports = function () {
         })
     });
 
-    router.delete('/:id',  (req, res) => {
+    router.delete('/data/:id',  (req, res) => {
         productController.deleteProductById(req.params.id).then(response => {
             res.status(200).send(response);
         }).catch(err => {
